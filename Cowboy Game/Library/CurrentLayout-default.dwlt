@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 9964
+  controlID: 33265
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 442}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 9969
+  controlID: 33211
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 9875
+  controlID: 33233
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -434,9 +434,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.76951844, y: -11.754303, z: 30.12867}
+    m_Target: {x: 0.76577014, y: 2.5337, z: 0.9335302}
     speed: 2
-    m_Value: {x: -0.76951844, y: -11.754303, z: 30.12867}
+    m_Value: {x: 0.76577014, y: 2.5337, z: 0.9335302}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -483,13 +483,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.37044713, y: 0.0072493916, z: -0.002892481, w: -0.92882794}
+    m_Target: {x: -0.1937707, y: 0.00092084584, z: -0.00016985355, w: -0.9810654}
     speed: 2
-    m_Value: {x: -0.37043992, y: 0.008642567, z: -0.0034481252, w: -0.9288098}
+    m_Value: {x: -0.19377069, y: 0.00092084584, z: -0.00016985355, w: -0.98106533}
   m_Size:
-    m_Target: 28.277323
+    m_Target: 8.185042
     speed: 2
-    m_Value: 29.609762
+    m_Value: 7.8325768
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -13938
+  m_LastSelectedObjectID: 16696
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -683,7 +683,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: b8c0ffff8ec9ffffc6c9ffffa6caffff90cdffff08d5ffff6afbffff16410000dc680000
+      m_ExpandedIDs: 9a70feffb8c1ffff6afbffff38410000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -745,7 +745,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/PolyRonin/Wild West Village/Materials
+    - Assets/eretichable Technologies/Revolver Gun (Low Poly)/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -759,7 +759,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 7c440000
     m_LastClickedID: 17532
-    m_ExpandedIDs: ffffffff0000000066410000684100006a4100006c4100006e4100008e420000
+    m_ExpandedIDs: ffffffff00000000d8410000da410000dc410000de410000e041000040420000166a00001e6a0000346a0000366a0000386a0000f2770000f477000000780000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -787,7 +787,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff0000000066410000684100006a4100006e4100008e420000
+    m_ExpandedIDs: ffffffff00000000d8410000da410000dc410000de41000040420000166a00001e6a0000346a0000366a0000386a0000f277000000780000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
