@@ -77,19 +77,23 @@ public class GunSystem : MonoBehaviour
 
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range))
         {
-            if (((1 << rayHit.collider.gameObject.layer) & whatIsEnemy) != 0)
-            {
-                Debug.Log(rayHit.collider.name);
+            Debug.Log("Hit: " + rayHit.collider.name);
 
-                //if (rayHit.collider.CompareTag("Enemy"))
-                
-                //rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
-            }
-            else
+            // Check if it's an enemy
+            if (rayHit.collider.CompareTag("Enemy"))
             {
-                Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
+                EnemyAI enemy = rayHit.collider.GetComponent<EnemyAI>();
+
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                }
             }
+
+            // ALWAYS spawn impact effect
+            Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
         }
+
 
 
 
