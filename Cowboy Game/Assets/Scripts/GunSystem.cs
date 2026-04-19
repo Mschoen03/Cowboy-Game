@@ -61,7 +61,6 @@ public class GunSystem : MonoBehaviour
     {
         readyToShoot = false;
 
-
         //Spread
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
@@ -79,7 +78,9 @@ public class GunSystem : MonoBehaviour
         {
             Debug.Log("Hit: " + rayHit.collider.name);
 
-            // Check if it's an enemy
+            bool spawnBulletHole = true;
+
+            // Enemy hit
             if (rayHit.collider.CompareTag("Enemy"))
             {
                 EnemyAI enemy = rayHit.collider.GetComponent<EnemyAI>();
@@ -90,9 +91,28 @@ public class GunSystem : MonoBehaviour
                 }
             }
 
-            // ALWAYS spawn impact effect
-            Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
+            // TNT hit
+            ExplosiveBox box = rayHit.collider.GetComponent<ExplosiveBox>();
+
+            if (box != null)
+            {
+                box.Explode();
+                spawnBulletHole = false;
+            }
+
+            // Only spawn decal if allowed
+            if (spawnBulletHole)
+            {
+                GameObject hole = Instantiate(
+                    bulletHoleGraphic,
+                    rayHit.point,
+                    Quaternion.LookRotation(rayHit.normal)
+                );
+
+                hole.transform.SetParent(rayHit.collider.transform);
+            }
         }
+
 
 
 
