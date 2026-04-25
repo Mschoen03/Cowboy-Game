@@ -127,6 +127,15 @@ public class GunSystem : MonoBehaviour
         if (bulletsShot > 0 && bulletsLeft > 0)
             Invoke("Shoot", timeBetweenShots);
     }
+    public void AddAmmo(int amount)
+    {
+        bulletsLeft += amount;
+
+        if (bulletsLeft > magazineSize)
+            bulletsLeft = magazineSize;
+    }
+
+
     private void ResetShot()
     {
         readyToShoot = true;
