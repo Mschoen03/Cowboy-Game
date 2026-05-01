@@ -34,13 +34,14 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (!playerInAttackRange)
+            ChasePlayer();
+        else
+            AttackPlayer();
     }
+
 
     private void Patroling()
     {
@@ -72,17 +73,28 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        agent.isStopped = false;
         agent.SetDestination(player.position);
     }
 
+
     private void AttackPlayer()
     {
-        agent.SetDestination(transform.position);
         transform.LookAt(player);
+
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+
+        // Stay near attack distance while strafing
+        Vector3 strafeDirection = transform.right * Mathf.Sin(Time.time * 2f);
+
+        Vector3 targetPos = player.position - directionToPlayer * (attackRange * 0.8f) + strafeDirection * 2f;
+
+        agent.isStopped = false;
+        agent.SetDestination(targetPos);
 
         if (!alreadyAttacked)
         {
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity)
+            Rigidbody rb = Instantiate(projectile, transform.position + Vector3.up * 0.5f, Quaternion.identity)
                 .GetComponent<Rigidbody>();
 
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
@@ -91,6 +103,7 @@ public class EnemyAI : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
 
     private void ResetAttack()
     {
