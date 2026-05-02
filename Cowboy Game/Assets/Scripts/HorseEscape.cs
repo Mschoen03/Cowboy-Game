@@ -1,33 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class HorseEscape : MonoBehaviour
+public class HorseEscape : MonoBehaviour, IInteractable
 {
     public GameObject winText;
 
-    private bool playerInRange = false;
+    private bool hasWon = false;
 
     void Start()
     {
         winText.SetActive(false);
     }
 
-    void Update()
+    public void Interact()
     {
-        // TEST SCORE = 100
-        if (playerInRange && ScoreManager.instance.score >= 100)
+        // Prevent multiple activations
+        if (hasWon)
+            return;
+
+        // Check score requirement
+        if (ScoreManager.instance.score >= 3000)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                WinGame();
-            }
+            WinGame();
+        }
+        else
+        {
+            Debug.Log("Need 3000 score to escape!");
         }
     }
 
     void WinGame()
     {
+        hasWon = true;
+
         Debug.Log("YOU WIN");
 
         winText.SetActive(true);
@@ -36,23 +42,5 @@ public class HorseEscape : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Player entered horse area");
-            playerInRange = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Player left horse area");
-            playerInRange = false;
-        }
     }
 }

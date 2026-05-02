@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,9 +13,16 @@ public class PlayerHealth : MonoBehaviour
     public Image frontHealthBar;
     public Image backHealthBar;
 
+    public GameObject youDiedText;
+    private bool isDead = false;
+
+
     void Start()
     {
         health = maxHealth;
+
+        youDiedText.SetActive(false);
+
     }
 
     void Update()
@@ -31,8 +39,24 @@ public class PlayerHealth : MonoBehaviour
             RestoreHealth(Random.Range(5, 10));
         }
         */
+        if (health <= 0 && !isDead)
+        {
+            isDead = true;
+
+            youDiedText.SetActive(true);
+
+            Time.timeScale = 0f;
+        }
+
+        if (isDead && Input.GetKeyDown(KeyCode.Space))
+        {
+            Time.timeScale = 1f;
+
+            SceneManager.LoadScene("SampleScene");
+        }
+
     }
-public void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         //Debug.Log(health);
         float fillF = frontHealthBar.fillAmount;
